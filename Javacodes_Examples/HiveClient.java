@@ -1,7 +1,4 @@
-package org.example.hadoop;
-
-//package org.test.HiveClient;
-//package com.test.hiveclient;
+package main.examples;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -12,31 +9,31 @@ import java.sql.Statement;
 
 public class HiveClient {
 /*
-* Before running this example we should start the      thrift server
+* Before running this example we should start the thrift server
 */
-      private static String driverName = "org.apache.hadoop.hive.jdbc.HiveDriver";
+    private static String driverName = "org.apache.hadoop.hive.jdbc.HiveDriver";
 
-      public static void main(String[] args) throws SQLException {
-              // TODO Auto-generated method stub
+    public static void main(String[] args) throws SQLException {
+            // TODO Auto-generated method stub
 try {
-       Class.forName(driverName);
+     Class.forName(driverName);
 } catch (ClassNotFoundException e){
-       e.printStackTrace();
-       System.exit(1);
+     e.printStackTrace();
+     System.exit(1);
 
 }
 Connection con = DriverManager.getConnection(
-               "jdbc:hive2://gatewaynode.cloudloka.com:10000/ajdb2", "labuser", "simplilearn");
+             "jdbc:hive2://u1:10000/mydbmysq", "hdu", "abc1234");
 Statement stmt = con.createStatement();
 
-      String tableName = "newtbl";
-      stmt.executeQuery("drop table " + tableName);
+    String tableName = "newtbl";
+    stmt.executeQuery("drop table " + tableName);
 ResultSet res = stmt.executeQuery("create table" + tableName +
-                      "(id int, name string, dept string)");
-      //show tables
-      String sql = "show tables '" + tableName + "'";
-      System.out.println("Running: " + sql);
-      res = stmt.executeQuery(sql);
-              if (res.next()) {
-                      System.out.println(res.getString(1));
-                      }}}
+                    "(id int, name string, dept string)");
+    //show tables
+    String sql = "show tables '" + tableName + "'";
+    System.out.println("Running: " + sql);
+    res = stmt.executeQuery(sql);
+            if (res.next()) {
+                    System.out.println(res.getString(1));
+                    }}}
